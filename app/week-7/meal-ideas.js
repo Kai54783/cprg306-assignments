@@ -9,11 +9,18 @@ export default function MealIdeas({ ingredient }) {
     async function fetchMealIdeas(ingredient) {
         try {
             const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
-            return data.meals || [];
+            if (data.meals) {
+                return data.meals;
+            } else {
+                return [{ strMeal: `No meal ideas found for ${ingredient}`, idMeal: "98032" }];
+            }
         } catch (error) {
-            console.log(`Error: ${error.message}`);
-            return [];
+            console.log(error.message);
+    
         }
     }
 
@@ -51,14 +58,13 @@ export default function MealIdeas({ ingredient }) {
 
     return (
         <div>
-            <h2>Meal Ideas for {ingredient}</h2>
-            <ul>
-                {mealDisplay.map(meal => (
-                    <li key={meal.idMeal}>
-                        <h3>{meal.strMeal}</h3>
-                        <img src={meal.strMealThumb} alt={meal.strMeal} width="100" />
-                    </li>
-                ))}
+            <h2 className="text-xl font-bold mb-4">Meal Ideas for {ingredient}</h2>
+            <ul className="space-y-4">
+            {meals.map((meal) => (
+                <li key={meal.idMeal} className="p-4 bg-gray-100 rounded-lg shadow-md flex items-center space-x-4">
+                    {meal.strMeal}    
+                </li>
+            ))}
             </ul>
         </div>
     );
