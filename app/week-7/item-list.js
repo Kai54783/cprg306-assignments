@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './item';
 
-export default function ItemList({ items, onItemSelect }) {
+export default function ItemList({ items }) {
   if (!items) {
     return <div>Loading...</div>;
   }
@@ -9,7 +9,7 @@ export default function ItemList({ items, onItemSelect }) {
   return (
     <div className="space-y-2">
       {items.sort((a, b) => a.name.localeCompare(b.name)).map(item => (
-        <Item key={item.id} item={item} onSelect={() => onItemSelect(item)} />
+        <Item key={item.id} item={item} />
       ))}
     </div>
   );
