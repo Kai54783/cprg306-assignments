@@ -35,7 +35,7 @@ export default function LoginPage() {
           <div>
             <p>Welcome {user.displayName}</p>
             <p>Your user ID is: {user.uid}</p>
-            <Link href="/week8/protected/">Protected Page</Link><br />
+            <Link href="/week-8/shopping-list">Continue to your Shopping List</Link><br />
             <button onClick={handleSignOut} className="text-lg m-2 hover:underline">Sign Out</button>
           </div>
         ) : (
