@@ -13,6 +13,7 @@ export default function Home() {
         <p className='text-blue-500 hover:text-blue-700'><Link href="/week-6">Week 6 Assignment</Link></p>
         <p className='text-blue-500 hover:text-blue-700'><Link href="/week-7">Week 7 Assignment</Link></p>
         <p className='text-blue-500 hover:text-blue-700'><Link href="/week-8">Week 8 Assignment</Link></p>
+        <p className='text-blue-500 hover:text-blue-700'><Link href="/week-10">Week 10 Assignment</Link></p>
         </div>
       </div>
     </main>
